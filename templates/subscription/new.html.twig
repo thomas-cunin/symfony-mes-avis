@@ -1,0 +1,27 @@
+{% form_theme form 'tailwind_2_layout.html.twig' %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une offre
+{% endblock %}
+
+{% block body %}
+	<div class="flex flex-col md:items-center md:flex-row justify-center mt-20">
+		<div class="flex justify-center"><img class="h-40" src="{{asset('assets/setup_pricing.svg')}}"/></div>
+		<div class=" h-40 flex flex-col justify-end md:ml-5">
+			<h1 class="inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200">Définissez vos offres.</h1>
+			<p>Lorem ipsum dolor majum kieltum fefu ail lolorui izmenji u ro ilui.</p>
+		</div>
+	</div>
+	<div class="flex justify-center mt-5">
+		<div class="w-max">
+			<div class="p-4 ">
+				{{form_start(form)}}
+				{{form_row(form.label, {'attr':{'class':'input input-md input-bordered'}})}}
+				{{form_row(form.capacity, {'attr':{'class':'input input-bordered input-md'}})}}
+				{{form_row(form.price, {'attr':{'class':'input input-bordered input-md'}})}}
+				{{form_row(form.submit, {'attr':{'class':'btn btn-ghost'}})}}
+				{{form_end(form)}}
+			</div>
+		</div>
+	</div>
+{% endblock %}

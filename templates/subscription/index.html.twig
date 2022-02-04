@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos offres
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-3xl font-bold underline">
+		Hello world!
+	</h1>
+	<section class="text-gray-600 body-font">
+		<div class="container px-5 py-24 mx-auto">
+			<div class="flex flex-col text-center w-full mb-20">
+				<h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Nos offres</h1>
+				{# <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Banh mi cornhole echo park skateboard authentic crucifix neutra tilde lyft biodiesel artisan direct trade mumblecore 3 wolf moon twee</p> #}
+			</div>
+			<div class="lg:w-4/5 w-full mx-auto overflow-auto">
+				<table class="table-auto w-full text-left whitespace-no-wrap">
+					<thead>
+						<tr>
+							<th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">Offre</th>
+							<th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Capacité</th>
+							<th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Prix</th>
+							{# <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Price</th> #}
+							<th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br"></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for sub in subs %}
+							{% if loop.first %}
+								<tr>
+									<td class="px-4 py-3">{{sub.label}}</td>
+									<td class="px-4 py-3">{{sub.capacity}}</td>
+									<td class="px-4 py-3">{{sub.price}}
+										€</td>
+									<td class="w-16 text-center flex flex-row items-center my-auto">
+										<a href="{{path('subscription_read', {id:sub.id})}}">
+											<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+											</svg>
+										</a>
+                    <a href="{{path('subscription_edit', {id:sub.id})}}">
+											<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+											</svg>
+										</a>
+									</td>
+								</tr>
+							{% else %}
+								<tr>
+									<td class="border-t-2 border-gray-200 px-4 py-3">{{sub.label}}</td>
+									<td class="border-t-2 border-gray-200 px-4 py-3">{{sub.capacity}}</td>
+									<td class="border-t-2 border-gray-200 px-4 py-3">{{sub.price}}
+										€</td>
+									<td class="border-t-2 border-gray-200 w-16 text-center flex flex-row">
+										<a href="{{path('subscription_read', {id:sub.id})}}">
+											<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+											</svg>
+										</a>
+										<a href="{{path('subscription_edit', {id:sub.id})}}">
+											<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+											</svg>
+										</a>
+									</td>
+								</tr>
+							{% endif %}
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			<div class="flex pl-4 mt-4 lg:w-2/3 w-full mx-auto">
+				<a class="text-yellow-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+					<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewbox="0 0 24 24">
+						<path d="M5 12h14M12 5l7 7-7 7"></path>
+					</svg>
+				</a>
+				{# <button class="flex ml-auto text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded">Button</button> #}
+			</div>
+		</div>
+	</section>
+{% endblock %}
