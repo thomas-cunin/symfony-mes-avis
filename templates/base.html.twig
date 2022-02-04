@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html class="dark">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}"/>
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -12,8 +16,34 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@1.25.4/dist/full.css" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        {# <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/typography@0.5.1/src/index.min.js"></script> #}
+
+        <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+        <script>
+            tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                colors: {
+                    clifford: '#da373d',
+                }
+                }
+            },
+            require('@tailwindcss/typography'),
+            }
+        </script>
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div id="app">
+            <nav>{% include "partials/_navbar.html.twig" %}</nav>
+            <header>{% block header %}{% endblock %}</header>
+            {# <nav>{% include "partials/_navbar.html.twig" %}</nav> #}
+            <main class="px-2">
+            {% block body %}{% endblock %}
+            </main>
+            {# <footer> #}{% include "partials/_footer.html.twig" %}{# </footer> #}
+        </div>
     </body>
 </html>
